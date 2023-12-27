@@ -1,0 +1,141 @@
+doctype html
+html(lang="en")
+    head
+        title= pageTitle
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css")
+        script(type="module", defer).
+            import { mergeCells } from './merge-cells.js'
+            mergeCells(document.getElementById('table'))
+    body
+
+        .container
+            h1= pageTitle
+
+            table#table.table.table-bordered
+                thead
+                    tr
+                        th Country
+                        th City
+                        th Occupation
+                        th Population
+                tbody
+                    tr
+                        td USA
+                        td New York
+                        td Software Engineer
+                        td 8500
+                    tr
+                        td USA
+                        td New York
+                        td Marketing Manager
+                        td 5400
+                    tr
+                        td USA
+                        td New York
+                        td Data Analyst
+                        td 2100
+                    tr
+                        td USA
+                        td Los Angeles
+                        td Software Engineer
+                        td 5500
+                    tr
+                        td USA
+                        td Los Angeles
+                        td Marketing Manager
+                        td 3300
+                    tr
+                        td USA
+                        td Los Angeles
+                        td Graphic Designer
+                        td 1200
+                    tr
+                        td Germany
+                        td Berlin
+                        td Software Engineer
+                        td 4500
+                    tr
+                        td Germany
+                        td Berlin
+                        td Project Manager
+                        td 3300
+                    tr
+                        td Germany
+                        td Berlin
+                        td Data Analyst
+                        td 1500
+                    tr
+                        td Germany
+                        td Munich
+                        td Software Engineer
+                        td 2200
+                    tr
+                        td Germany
+                        td Munich
+                        td Project Manager
+                        td 1800
+                    tr
+                        td Germany
+                        td Munich
+                        td Graphic Designer
+                        td 800
+                    tr
+                        td France
+                        td Paris
+                        td Marketing Specialist
+                        td 2700
+                    tr
+                        td France
+                        td Paris
+                        td Data Analyst
+                        td 1800
+                    tr
+                        td France
+                        td Paris
+                        td Software Developer
+                        td 1200
+                    tr
+                        td France
+                        td Lyon
+                        td Marketing Specialist
+                        td 900
+                    tr
+                        td France
+                        td Lyon
+                        td Data Analyst
+                        td 600
+                    tr
+                        td France
+                        td Lyon
+                        td Graphic Designer
+                        td 400
+                    tr
+                        td UK
+                        td London
+                        td Software Developer
+                        td 3300
+                    tr
+                        td UK
+                        td London
+                        td Marketing Manager
+                        td 2100
+                    tr
+                        td Canada
+                        td Toronto
+                        td Marketing Manager
+                        td 3600
+                    tr
+                        td Canada
+                        td Toronto
+                        td Project Manager
+                        td 2700
+                    tr
+                        td Canada
+                        td Vancouver
+                        td Marketing Manager
+                        td 1400
+                    tr
+                        td Canada
+                        td Vancouver
+                        td Project Manager
+                        td 1100

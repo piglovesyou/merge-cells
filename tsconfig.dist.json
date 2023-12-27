@@ -1,0 +1,11 @@
+{
+    "extends": "./tsconfig",
+    "compilerOptions": {
+        "module": "es2015",
+        "noEmit": false,
+        "outDir": "dist",
+        "declaration": true,
+        "declarationMap": true
+    },
+    "files": ["src/merge-cells.ts"]
+}

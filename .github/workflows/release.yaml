@@ -1,4 +1,4 @@
-name: Main
+name: Create release
 
 on:
     push:
@@ -18,7 +18,5 @@ jobs:
               with:
                   files: |
                       dist/merge-cells.js
-                      dist/merge-cells.min.js
-                      dist/merge-cells.min.js.map
-                      dist/merge-cells.ts
-                      dist/merge-cells.ts.map
+                      dist/merge-cells.d.ts
+                      dist/merge-cells.d.ts.map

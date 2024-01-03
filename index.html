@@ -3,6 +3,10 @@
   <head>
     <title>🍲 merge-cells</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
+    <script type="module" defer>
+      import { mergeCells } from './merge-cells.js'
+      mergeCells(document.getElementById('table'))
+    </script>
   </head>
   <body>
     <div class="container">
@@ -164,6 +168,5 @@
         </tbody>
       </table>
     </div>
-    <script src="main.js"></script>
   </body>
 </html>

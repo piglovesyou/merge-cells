@@ -48,6 +48,6 @@
         "test": "jest",
         "gh-pages": "gh-pages -d dist",
         "preversion": "npm-run-all lint test build",
-        "postversion": "git push --tags && yarn publish . --tag $npm_package_version && yarn gh-pages"
+        "postversion": "git push --tags && yarn publish . --tag $npm_package_version --tag latest && yarn gh-pages"
     }
 }

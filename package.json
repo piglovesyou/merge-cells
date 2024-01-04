@@ -1,12 +1,16 @@
 {
     "name": "merge-cells",
-    "version": "0.1.5",
+    "version": "0.2.0",
     "main": "dist/merge-cells.js",
     "files": [
         "dist"
     ],
     "author": "Soichi Takamura <thepiglovesyou@gmail.com>",
     "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/piglovesyou/merge-cells/issues"
+    },
+    "homepage": "https://github.com/piglovesyou/merge-cells#readme",
     "devDependencies": {
         "@babel/preset-env": "^7.23.6",
         "@babel/preset-typescript": "^7.23.3",

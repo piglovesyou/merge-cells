@@ -1,4 +1,4 @@
-# merge-cells [![Node.js CI](https://github.com/piglovesyou/merge-cells/actions/workflows/node.js.yml/badge.svg)](https://github.com/piglovesyou/merge-cells/actions/workflows/node.js.yml)
+# merge-cells [![Node.js CI](https://github.com/piglovesyou/merge-cells/actions/workflows/node.js.yml/badge.svg)](https://github.com/piglovesyou/merge-cells/actions/workflows/node.js.yml) [![npm version](https://badge.fury.io/js/merge-cells.svg)](https://badge.fury.io/js/merge-cells) [![npm](https://img.shields.io/npm/dw/merge-cells)](https://www.npmjs.com/package/merge-cells) [![Codecov](https://img.shields.io/codecov/c/github/piglovesyou/merge-cells)](https://app.codecov.io/github/piglovesyou/merge-cells)
 
 Provide JavaScript/TypeScript functions to help you merge cells with vertically the same values.
 
@@ -53,7 +53,7 @@ function mergeCells(tableEl: HTMLTableElement, columnIndexes?: number[], options
 
 ### `calcRowspanFromObjectArray`
 
-Calculate the `rowspan` of each cell in JavaScript object rows. Useful for flexible usage such as in server-side
+Calculate the `rowspan` of each cell in JavaScript object rows. Useful in a context of server-side
 rendering. Signature:
 
 ```ts

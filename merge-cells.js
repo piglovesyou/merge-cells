@@ -38,10 +38,10 @@ valueProvider, options, baseRows = [], acc = []) {
     }
     return calcRowspanRecur(rest, fields, valueProvider, options, nextBaseRows, acc);
 }
-export function applyRowspanToTable(tableEl, columnIndexes) {
+export function applyRowspanToTable(tableEl, columnIndexes, options = defaultOptions) {
     for (let tBody of tableEl.tBodies) {
         tBody.remove(); // To avoid reflow
-        const rowspans = calcRowspanWithTableRows(tBody.rows, columnIndexes);
+        const rowspans = calcRowspanWithTableRows(tBody.rows, columnIndexes, options);
         for (let i = 0; i < tBody.rows.length; i++) {
             const rowEl = tBody.rows.item(i);
             const rowspan = rowspans[i];
@@ -56,7 +56,7 @@ export function applyRowspanToTable(tableEl, columnIndexes) {
         tableEl.appendChild(tBody);
     }
 }
-export function calcRowspanWithTableRows(rows, columnIndexes = rows[0] ? Array.from(Array(rows[0].cells.length).keys()) : [], options = defaultOptions) {
+export function calcRowspanWithTableRows(rows, columnIndexes = rows[0] ? Array.from(Array(rows[0].cells.length).keys()) : [], options) {
     return calcRowspanRecur(Array.from(rows), columnIndexes, (row, fieldIndex) => row.cells[fieldIndex].textContent, options);
 }
 export function calcRowspanFromObjectArray(rows, columnKeys, options = defaultOptions) {

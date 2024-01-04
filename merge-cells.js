@@ -1,5 +1,8 @@
+const defaultOptions = {
+    respectColumnLevels: true,
+};
 export function calcRowspanRecur(rows, fields, // Object keys or array indexes
-valueProvider, baseRows = [], acc = []) {
+valueProvider, options, baseRows = [], acc = []) {
     if (rows.length == 0)
         return acc;
     const [top, ...rest] = rows;
@@ -12,19 +15,28 @@ valueProvider, baseRows = [], acc = []) {
         rowspan: rowspan,
     };
     acc.push(rowspan);
-    const nextBaseRows = [];
+    const nextBaseRows = options.respectColumnLevels ? [] : baseRows;
     for (let i = 0; i < fields.length; i++) {
         const field = fields[i];
         const baseRow = baseRows[i];
         const isNewValue = !baseRow || valueProvider(top, field) !== valueProvider(baseRow.row, field);
         if (isNewValue) {
-            return calcRowspanRecur(rest, fields, valueProvider, [...nextBaseRows, ...Array(fields.length - nextBaseRows.length).fill(topAcc)], acc);
+            if (options.respectColumnLevels) {
+                return calcRowspanRecur(rest, fields, valueProvider, options, [...nextBaseRows, ...Array(fields.length - nextBaseRows.length).fill(topAcc)], acc);
+            }
+            else {
+                baseRows[i] = topAcc;
+            }
         }
-        baseRow.rowspan[field]++;
-        topAcc.rowspan[field] = 0;
-        nextBaseRows.push(baseRow);
+        else {
+            baseRows[i].rowspan[field]++;
+            topAcc.rowspan[field] = 0;
+            if (options.respectColumnLevels) {
+                nextBaseRows.push(baseRow);
+            }
+        }
     }
-    return calcRowspanRecur(rest, fields, valueProvider, nextBaseRows, acc);
+    return calcRowspanRecur(rest, fields, valueProvider, options, nextBaseRows, acc);
 }
 export function applyRowspanToTable(tableEl, columnIndexes) {
     for (let tBody of tableEl.tBodies) {
@@ -44,11 +56,11 @@ export function applyRowspanToTable(tableEl, columnIndexes) {
         tableEl.appendChild(tBody);
     }
 }
-export function calcRowspanWithTableRows(rows, columnIndexes = rows[0] ? Array.from(Array(rows[0].cells.length).keys()) : []) {
-    return calcRowspanRecur(Array.from(rows), columnIndexes, (row, fieldIndex) => row.cells[fieldIndex].textContent);
+export function calcRowspanWithTableRows(rows, columnIndexes = rows[0] ? Array.from(Array(rows[0].cells.length).keys()) : [], options = defaultOptions) {
+    return calcRowspanRecur(Array.from(rows), columnIndexes, (row, fieldIndex) => row.cells[fieldIndex].textContent, options);
 }
-export function calcRowspanFromObjectArray(rows, columnKeys) {
-    return calcRowspanRecur(rows, columnKeys, (row, field) => row[field]);
+export function calcRowspanFromObjectArray(rows, columnKeys, options = defaultOptions) {
+    return calcRowspanRecur(rows, columnKeys, (row, field) => row[field], options);
 }
 export const mergeCells = applyRowspanToTable;
 export default mergeCells;
